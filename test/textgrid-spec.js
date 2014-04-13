@@ -1,7 +1,7 @@
 'use strict';
 
-var textgrid = require('../lib/textgrid.js');
-
+var textgrid = require("../lib/textgrid.js");
+var fs = require("fs");
 /*
   ======== A Handy Little Jasmine Reference ========
 https://github.com/pivotal/jasmine/wiki/Matchers
@@ -20,7 +20,7 @@ https://github.com/pivotal/jasmine/wiki/Matchers
     expect(x).toBeGreaterThan(y); passes if x is greater than y
     expect(function(){fn();}).toThrow(e); passes if function fn throws exception e when executed
 
-    Every matcher's criteria can be inverted by prepending .not:
+    Every matcher"s criteria can be inverted by prepending .not:
     expect(x).not.toEqual(y); compares objects or primitives x and y and passes if they are not equivalent
 
     Custom matchers help to document the intent of your specs, and can help to remove code duplication in your specs.
@@ -29,10 +29,10 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
         toBeLessThan: function(expected) {
           var actual = this.actual;
-          var notText = this.isNot ? ' not' : '';
+          var notText = this.isNot ? " not" : ";
 
           this.message = function () {
-            return 'Expected ' + actual + notText + ' to be less than ' + expected;
+            return "Expected " + actual + notText + " to be less than " + expected;
           }
 
           return actual < expected;
@@ -42,8 +42,17 @@ https://github.com/pivotal/jasmine/wiki/Matchers
     });
 
 */
-describe('lib/textgrid', function() {
-  it('should init', function() {
+describe("lib/textgrid", function() {
+
+  it("should init", function() {
     expect(textgrid.init).toBeDefined();
   });
+
+  it("should read sample data", function() {
+    var sampleUtterancesTextGrid = fs.readFileSync(__dirname + "/../data/sampleUtterances.TextGrid", {
+      encoding: "UTF-8"
+    });
+    expect(sampleUtterancesTextGrid).toBeDefined();
+  });
+
 });
