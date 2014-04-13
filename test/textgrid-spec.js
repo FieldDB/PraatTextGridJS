@@ -55,4 +55,13 @@ describe("lib/textgrid", function() {
     expect(sampleUtterancesTextGrid).toBeDefined();
   });
 
+  it("should convert sampleUtterancesTextGrid textgrid into json", function() {
+    var sampleUtterancesTextGrid = fs.readFileSync(__dirname + "/../data/sampleUtterances.TextGrid", {
+      encoding: "UTF-8"
+    });
+    var json = textgrid.textgrid2JSON(sampleUtterancesTextGrid);
+    console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+  });
+
 });
