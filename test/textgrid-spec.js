@@ -62,6 +62,15 @@ describe("lib/textgrid", function() {
     var json = textgrid.textgrid2JSON(sampleUtterancesTextGrid);
     console.log(JSON.stringify(json, null, 2));
     expect(typeof json).toBe("object");
+    for (var itemIndex = 0; itemIndex < json.items.length; itemIndex++) {
+      console.log("Sanity check for tier " + itemIndex);
+      if (json.items[itemIndex].points) {
+        expect(json.items[itemIndex].points.length).toEqual(json.items[itemIndex].points_size);
+      }
+      if (json.items[itemIndex].intervals) {
+        expect(json.items[itemIndex].intervals.length).toEqual(json.items[itemIndex].intervals_size);
+      }
+    }
   });
 
 });
