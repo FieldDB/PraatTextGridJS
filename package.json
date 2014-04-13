@@ -1,0 +1,39 @@
+{
+  "name": "textgrid",
+  "description": "A small library which can parse TextGrid into json and json into TextGrid",
+  "version": "0.1.0",
+  "homepage": "https://github.com/OpenSourceFieldlinguistics/PraatTextGridJS",
+  "author": {
+    "name": "OpenSourceFieldLinguistics Contribs",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/OpenSourceFieldlinguistics/PraatTextGridJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OpenSourceFieldlinguistics/PraatTextGridJS/issues"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "https://github.com/OpenSourceFieldlinguistics/PraatTextGridJS/blob/master/LICENSE"
+    }
+  ],
+  "main": "lib/textgrid",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "jasmine-node test"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-jasmine-node": "^0.1.0",
+    "jasmine-node": "^1.11.0",
+    "grunt-contrib-watch": "~0.4.0"
+  },
+  "keywords": []
+}
