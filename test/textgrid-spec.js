@@ -1,6 +1,6 @@
 'use strict';
 
-var textgrid = require("../lib/textgrid.js");
+var textgrid = require("../lib/textgrid.js").TextGrid;
 var fs = require("fs");
 /*
   ======== A Handy Little Jasmine Reference ========
@@ -72,5 +72,6 @@ describe("lib/textgrid", function() {
       }
     }
   });
+  
 
 });
