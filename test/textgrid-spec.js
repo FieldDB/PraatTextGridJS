@@ -60,7 +60,7 @@ describe("lib/textgrid", function() {
       encoding: "UTF-8"
     });
     var json = textgrid.textgrid2JSON(sampleUtterancesTextGrid);
-    console.log(JSON.stringify(json, null, 2));
+    // console.log(JSON.stringify(json, null, 2));
     expect(typeof json).toBe("object");
     for (var itemIndex = 0; itemIndex < json.items.length; itemIndex++) {
       console.log("Sanity check for tier " + itemIndex);
@@ -72,6 +72,43 @@ describe("lib/textgrid", function() {
       }
     }
   });
-  
+
+  it("should discover IGT relationships between aligned tiers", function() {
+    var sampleUtterancesTextGrid = fs.readFileSync(__dirname + "/../data/sample_elan.TextGrid", {
+      encoding: "UTF-8"
+    });
+    var json = textgrid.textgrid2JSON(sampleUtterancesTextGrid);
+    // console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+    json = textgrid.jsonToIGT(json);
+    expect(typeof json).toBe("object");
+
+  });
+
+  it("should discover be possible to get start and end times for segments in", function() {
+    var sampleUtterancesTextGrid = fs.readFileSync(__dirname + "/../data/sampleNested.TextGrid", {
+      encoding: "UTF-8"
+    });
+    var json = textgrid.textgrid2JSON(sampleUtterancesTextGrid);
+    console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+    json = textgrid.jsonToIGT(json);
+    console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+
+  });
+
+  it("should discover not IGT relationships between speaker tiers", function() {
+    var sampleMultipleSpeakersTiers = fs.readFileSync(__dirname + "/../data/sampleMultipleSpeakers.TextGrid", {
+      encoding: "UTF-8"
+    });
+    var json = textgrid.textgrid2JSON(sampleMultipleSpeakersTiers);
+    // console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+    json = textgrid.jsonToIGT(json);
+    console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+
+  });
 
 });
