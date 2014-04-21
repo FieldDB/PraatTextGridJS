@@ -114,10 +114,33 @@ describe("lib/textgrid", function() {
     var json = textgrid.textgridToIGT(sampleMultipleSpeakersTiers, "speakersaretiernames");
     // console.log(JSON.stringify(json, null, 2));
     expect(typeof json).toBe("object");
+    console.log(json.items.length);
     console.log(JSON.stringify(json.isIGTNestedOrAlignedOrBySpeaker, null, 2));
     expect(json.isIGTNestedOrAlignedOrBySpeaker.probablyAligned).toBeFalsy();
     expect(json.isIGTNestedOrAlignedOrBySpeaker.probablyBySpeaker).toBeTruthy();
 
+  });
+
+
+  it("should accept multiple TextGrids from different files with optionally inserted file names", function() {
+    var sampleMultipleTextGrids = "\n\nFile name = sampleMultipleSpeakers\n" + fs.readFileSync(__dirname + "/../data/sampleMultipleSpeakers.TextGrid", {
+      encoding: "UTF-8"
+    });
+    sampleMultipleTextGrids = sampleMultipleTextGrids + "\n\n" + fs.readFileSync(__dirname + "/../data/sample_elan.TextGrid", {
+      encoding: "UTF-8"
+    });
+    sampleMultipleTextGrids = sampleMultipleTextGrids + "\n\nFile name = sampleNested\n" + fs.readFileSync(__dirname + "/../data/sampleNested.TextGrid", {
+      encoding: "UTF-8"
+    });
+    var json = textgrid.textgridToIGT(sampleMultipleTextGrids);
+    // console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+    console.log(json.items.length);
+    expect(json.items.length).toEqual(16);
+    expect(json.items[0].fileName).toEqual("sampleMultipleSpeakers");
+    expect(json.items[2].fileName).toEqual("Unknown");
+    // console.log(JSON.stringify(json.items[json.items.length-1].fileName, null, 2));
+    expect(json.items[json.items.length-1].fileName).toEqual("sampleNested");
   });
 
 });
