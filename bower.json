@@ -6,7 +6,7 @@
     "OpenSourceFieldLinguistics Contribs"
   ],
   "description": "A small library which can parse TextGrid into json and json into TextGrid",
-  "main": "lib/textgrid.js",
+  "main": "dist/textgrid.js",
   "moduleType": [
     "amd",
     "node"
@@ -22,7 +22,7 @@
     "bower_components",
     "test",
     "tests",
-    "dist",
+    "lib",
     "Gruntfile.js",
     "data",
     "package.json"
