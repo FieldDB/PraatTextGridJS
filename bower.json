@@ -1,0 +1,30 @@
+{
+  "name": "textgrid",
+  "version": "2.2.0",
+  "homepage": "https://github.com/OpenSourceFieldlinguistics/PraatTextGridJS",
+  "authors": [
+    "OpenSourceFieldLinguistics Contribs"
+  ],
+  "description": "A small library which can parse TextGrid into json and json into TextGrid",
+  "main": "lib/textgrid.js",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "keywords": [
+    "praat",
+    "textgrid"
+  ],
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "dist",
+    "Gruntfile.js",
+    "data",
+    "package.json"
+  ]
+}
