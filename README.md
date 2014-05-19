@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/OpenSourceFieldlinguistics/PraatTextGridJS.png)](https://travis-ci.org/OpenSourceFieldlinguistics/PraatTextGridJS)
 # textgrid
 
 A small library which can parse TextGrid into json and json into TextGrid

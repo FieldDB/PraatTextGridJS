@@ -140,7 +140,30 @@ describe("lib/textgrid", function() {
     expect(json.items[0].fileName).toEqual("sampleMultipleSpeakers");
     expect(json.items[2].fileName).toEqual("Unknown");
     // console.log(JSON.stringify(json.items[json.items.length-1].fileName, null, 2));
-    expect(json.items[json.items.length-1].fileName).toEqual("sampleNested");
+    expect(json.items[json.items.length - 1].fileName).toEqual("sampleNested");
+    expect(json.fileNames).toEqual([ 'sampleMultipleSpeakers', 'sampleNested' ]);
   });
 
+  it("should put the filename as the text of an interval if there is only 1 or two intervals and the interval text is utterance", function() {
+    var sampleEmptyTextGrid = "\n\nFile name = sampleEmpty\n" + fs.readFileSync(__dirname + "/../data/sampleEmpty.TextGrid", {
+      encoding: "UTF-8"
+    });
+    var json = textgrid.textgridToIGT(sampleEmptyTextGrid);
+    // console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+    // console.log(json.items.length);
+    expect(json.items.length).toEqual(1);
+    expect(json.items[0].intervals[0].text).toEqual("sampleEmpty");
+  });
+
+  xit("should create one interval if there were no intervals in the TextGrid", function() {
+    var sampleEmptyTextGrid = fs.readFileSync(__dirname + "/../data/sampleEmpty.TextGrid", {
+      encoding: "UTF-8"
+    });
+    var json = textgrid.textgridToIGT(sampleEmptyTextGrid);
+    // console.log(JSON.stringify(json, null, 2));
+    expect(typeof json).toBe("object");
+    console.log(json.items.length);
+    expect(json.items.length).toEqual(1);
+  });
 });

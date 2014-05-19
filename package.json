@@ -1,7 +1,7 @@
 {
   "name": "textgrid",
   "description": "A small library which can parse TextGrid into json and json into TextGrid",
-  "version": "0.1.0",
+  "version": "2.2.0",
   "homepage": "https://github.com/OpenSourceFieldlinguistics/PraatTextGridJS",
   "author": {
     "name": "OpenSourceFieldLinguistics Contribs",
