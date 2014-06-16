@@ -43,27 +43,25 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
 */
 //Dummy test, does nothing. 
-("lib/textgrid", function() {
+describe("lib/textgrid", function() {
 
 
-  it("should convert sampleUtterancesTextGrid textgrid into json", function() {
-    var sampleUtterancesTextGrid = fs.readFileSync(__dirname + "/../data/sampleUtterances.TextGrid", {
+  it("Should load SampleInput.json", function() {
+    var sampleUtterancesTextGrid = fs.readFileSync(__dirname + "/SampleInput.json", {
       encoding: "UTF-8"
     });
-    var json = textgrid.textgridToJSON(sampleUtterancesTextGrid);
-    console.log(JSON.stringify(json, null, 2));
-    expect(typeof json).toBe("object");
-    for (var itemIndex = 0; itemIndex < json.items.length; itemIndex++) {
-      console.log("Sanity check for tier " + itemIndex);
-      if (json.items[itemIndex].points) {
-        expect(json.items[itemIndex].points.length).toEqual(json.items[itemIndex].points_size);
-      }
-      if (json.items[itemIndex].intervals) {
-        expect(json.items[itemIndex].intervals.length).toEqual(json.items[itemIndex].intervals_size);
-      }
-    }
+   expect(sampleUtterancesTextGrid).toBeDefined() 
   }); // Symon: This tests json generation by ensuring that the items in the json object = the number of items in the textgrid file. 
   
+  it("Should produce a textgrid", function() {
+    var AudioIntervalsjson = fs.readFileSync(__dirname + "/SampleInput.json", {
+      encoding: "UTF-8"
+    });
+     var AudioIntervalstextgrid = fs.readFileSync(__dirname + "/SampleOutput.TextGrid", {
+      encoding: "UTF-8"
+    });
+//    expect(AudioIntervalsjson).toEqual(AudioIntervalstextgrid) 
+  });
 
   xit("should create one interval if there were no intervals in the TextGrid", function() {
     var sampleEmptyTextGrid = fs.readFileSync(__dirname + "/../data/sampleEmpty.TextGrid", {
