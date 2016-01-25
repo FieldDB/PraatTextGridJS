@@ -42,6 +42,8 @@ https://github.com/pivotal/jasmine/wiki/Matchers
     });
 
 */
+// these are all unit tests
+// I'm unsure what a number of them do beyond the description given in the it function, since I don't know what each individual function within the tests do. I will avoid comments on these until I learn more.
 describe("lib/textgrid", function() {
 
   it("should init", function() {
@@ -71,8 +73,8 @@ describe("lib/textgrid", function() {
         expect(json.items[itemIndex].intervals.length).toEqual(json.items[itemIndex].intervals_size);
       }
     }
-  });
-
+  }); // Symon: This tests json generation by ensuring that the items in the json object = the number of items in the textgrid file. 
+  
   it("should discover IGT relationships between aligned tiers", function() {
     var sampleUtterancesTextGrid = fs.readFileSync(__dirname + "/../data/sample_elan.TextGrid", {
       encoding: "UTF-8"
@@ -83,7 +85,7 @@ describe("lib/textgrid", function() {
     expect(typeof json.intervalsByXmin).toBe("object");
     expect(typeof json.intervalsByText).toBe("object");
     expect(json.isIGTNestedOrAlignedOrBySpeaker.probablyAligned).toBeTruthy();
-
+//Symon: it seems that the first argument of the any "it" function gives a description of each test. 
   });
 
   it("should discover speakers in Elan exported tiers", function() {
@@ -93,7 +95,6 @@ describe("lib/textgrid", function() {
     var json = textgrid.textgridToIGT(sampleUtterancesTextGrid);
     // console.log(JSON.stringify(json, null, 2));
     expect(json.isIGTNestedOrAlignedOrBySpeaker.probablyBySpeaker).toBeTruthy();
-
   });
 
   it("should discover be possible to get start and end times for segments in", function() {
