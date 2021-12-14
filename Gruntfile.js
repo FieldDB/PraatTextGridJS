@@ -10,7 +10,7 @@ module.exports = function(grunt) {
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+      ' Licensed <%= pkg.licenses[0].type %> */\n',
     // Task configuration.
     concat: {
       options: {
@@ -32,12 +32,14 @@ module.exports = function(grunt) {
       },
     },
     jasmine_node: {
-      specNameMatcher: 'spec',
-      projectRoot: './',
-      requirejs: false,
-      forceExit: false,
-      isVerbose: true,
-      showColors: true,
+      options: {
+        specNameMatcher: 'spec',
+        forceExit: false,
+        match: '.',
+        requirejs: false,
+        isVerbose: true,
+        showColors: true,
+      },
       jUnit: {
         report: true,
         savePath: './build/reports/jasmine/',
