@@ -1,6 +1,6 @@
-/*! textgrid - v2.2.0 - 2014-05-19
+/*! textgrid - v2.2.0 - 2021-12-14
 * https://github.com/OpenSourceFieldlinguistics/PraatTextGridJS
-* Copyright (c) 2014 OpenSourceFieldLinguistics Contribs; Licensed Apache 2.0 */
+* Copyright (c) 2021 OpenSourceFieldLinguistics Contribs; Licensed Apache 2.0 */
 (function(exports) {
 
 	'use strict';
@@ -61,7 +61,7 @@
 					fileName = "Unknown"; /* reset filename if there is are two empty lines */
 					console.log("Reset filename if there is are two empty lines");
 				}
-			} else if (line.search(/ /) !== 0) {
+			} else if (line.search(/ /) !== 0 && line.search(/\t/) !== 0) {
 				pieces = line.split(" = ");
 				if (pieces.length === 2) {
 					key = pieces[0].trim().replace(/ /g, "_");

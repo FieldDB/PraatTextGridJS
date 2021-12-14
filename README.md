@@ -9,7 +9,13 @@ Install the module with: `npm install textgrid --save`
 
 ```javascript
 var textgrid = require('textgrid');
-textgrid.init(); // "init"
+const fs = require('fs')
+
+var sampleUtterancesTextGrid = fs.readFileSync('./test.TextGrid', {
+  encoding: "UTF-8"
+});
+var json = textgrid.TextGrid.textgridToJSON(sampleUtterancesTextGrid)
+console.log(json)
 ```
 
 ### In the browser
